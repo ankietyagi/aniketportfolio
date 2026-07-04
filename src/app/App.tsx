@@ -974,7 +974,7 @@ function Hero({ theme }: { theme: Theme }) {
         </motion.div>
 
         {/* Stats */}
-        <motion.div className="flex flex-wrap items-center justify-center border-t border-b"
+        <motion.div className="flex-wrap items-center justify-center border-t border-b hidden"
           style={{ borderColor:d?"rgba(255,255,255,0.06)":"rgba(12,15,29,0.07)" }}
           initial={{ opacity:0 }} animate={{ opacity:1 }}
           transition={{ duration:0.8, delay:0.88, ease:EASE }}>
