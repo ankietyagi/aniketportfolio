@@ -74,7 +74,7 @@ const STATS = [
 
 const EXPS = [
   {
-    role:"Senior Frontend Developer", co:"Vercel Inc.",
+    role:"Frontend Developer", co:"Vercel Inc.",
     period:"2022 – Present", loc:"Remote, USA",
     desc:"Led the redesign of the developer dashboard serving 2M+ users. Architected a component library adopted across four product teams, cutting UI inconsistencies by 74%.",
     tags:["React","Next.js","TypeScript","Design Systems"],
@@ -466,7 +466,7 @@ function ResumeCard({ theme }: { theme: Theme }) {
             </p>
             <p className="text-xs mt-0.5"
               style={{ fontFamily:SF, color:isDark?"rgba(238,242,255,0.4)":"rgba(12,15,29,0.42)" }}>
-              Senior Frontend Developer · 2 pages
+              Frontend Developer · 2 pages
             </p>
           </div>
         </div>
@@ -944,7 +944,7 @@ function Hero({ theme }: { theme: Theme }) {
             color:d?"rgba(238,242,255,0.48)":"rgba(12,15,29,0.46)" }}
           initial={{ opacity:0, y:14 }} animate={{ opacity:1, y:0 }}
           transition={{ duration:0.7, delay:0.52, ease:EASE }}>
-          Senior Frontend Developer &amp; UI/UX Designer
+          Frontend Developer &amp; UI/UX Designer
         </motion.p>
 
         {/* CTAs */}
@@ -1482,7 +1482,7 @@ function Footer({ theme }: { theme: Theme }) {
           <NavLogo theme={theme} onClick={() => window.scrollTo({top:0,behavior:"smooth"})}/>
           <p className="mt-2 text-xs"
             style={{ fontFamily:SF, color:d?"rgba(238,242,255,0.3)":"rgba(12,15,29,0.36)" }}>
-            Senior Frontend Developer · UI/UX Designer
+            Frontend Developer · UI/UX Designer
           </p>
         </div>
         <nav className="flex flex-wrap justify-center gap-6">
