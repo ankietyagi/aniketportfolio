@@ -63,7 +63,7 @@ const fadeUp = {
 const tx = (delay = 0, dur = 0.8) => ({ duration: dur, delay, ease: EASE });
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
-const NAV = ["Home","About","Contact"];
+const NAV = ["Home","About","Experience","Skills","Services","Contact"];
 
 const STATS = [
   { v:"8+",   l:"Years of craft"    },
@@ -74,42 +74,50 @@ const STATS = [
 
 const EXPS = [
   {
-    role:"Frontend Developer", co:"Vercel Inc.",
-    period:"2022 – Present", loc:"Remote, USA",
-    desc:"Led the redesign of the developer dashboard serving 2M+ users. Architected a component library adopted across four product teams, cutting UI inconsistencies by 74%.",
-    tags:["React","Next.js","TypeScript","Design Systems"],
+    role: "Front-End Developer", co: "ANR Software Pvt Ltd",
+    period: "2022 – Present", loc: "India",
+    desc: "UI design based on business requirements, improving existing designs, and building mobile-friendly websites. Working on the Jekyll Framework and building product-based websites using PSD/Figma to HTML conversion.",
+    tags: ["Jekyll", "HTML", "CSS", "Frontend"],
   },
   {
-    role:"UI/UX Engineer", co:"Stripe",
-    period:"2020 – 2022", loc:"San Francisco, CA",
-    desc:"Crafted payment flows processing $2B+ in transactions. Improved checkout conversion 18% through systematic micro-interaction work across the merchant interface.",
-    tags:["React","GSAP","Figma","A/B Testing"],
+    role: "Front-End Developer", co: "Auxesis Infotech Pvt Ltd",
+    period: "2020 – 2022", loc: "India",
+    desc: "Designed web UI as per customer needs and suggested improvements. Created mobile-friendly websites using Laravel, Drupal, and Angular, with expertise in converting PSD/Figma files to HTML.",
+    tags: ["Laravel", "Drupal", "Angular", "UI/UX"],
   },
   {
-    role:"Frontend Developer", co:"Linear",
-    period:"2018 – 2020", loc:"Remote",
-    desc:"Built real-time collaboration features and the issue tracker UI used by 500k+ engineering teams, delivering 60 fps interactions across all supported browsers.",
-    tags:["Vue.js","GraphQL","WebSockets","CSS-in-JS"],
+    role: "Frontend Developer & UI/UX Designer", co: "Enterslice Fintech Pvt. Ltd.",
+    period: "2018 – 2020", loc: "India",
+    desc: "Gathered client information, executed PSD to HTML conversions, and ensured timely delivery of all project deliverables.",
+    tags: ["PSD to HTML", "UI/UX", "Graphic Design"],
   },
   {
-    role:"UI Developer", co:"Razorpay",
-    period:"2016 – 2018", loc:"Bangalore, India",
-    desc:"Developed responsive checkout widgets integrated across 300k+ merchant websites. Reduced average page weight 40% through code-splitting and asset optimisation.",
-    tags:["JavaScript","CSS","Performance","Analytics"],
+    role: "Back Office Executive", co: "SSR Techvision Pvt Ltd",
+    period: "2017 – 2018", loc: "India",
+    desc: "Responsible for gathering and processing research data, performing basic admin duties, and coordinating with the sales team.",
+    tags: ["Data Processing", "Admin", "Coordination"],
+  },
+  {
+    role: "Web Designer Intern", co: "Benzaitens Group Ltd.",
+    period: "2016 – 2017", loc: "India",
+    desc: "Gathered requirements for UI design, created custom graphic sets like logos and banners, and focused on website responsiveness.",
+    tags: ["Web Design", "Graphic Design", "Responsiveness"],
   },
 ];
 
 const SKILLS = [
-  { name:"React / Next.js", pct:98, Icon:SiReact,      c:"#61DAFB" },
-  { name:"TypeScript",      pct:95, Icon:SiTypescript,  c:"#3178C6" },
-  { name:"Tailwind CSS",    pct:97, Icon:SiTailwindcss, c:"#38BDF8" },
-  { name:"Vue.js",          pct:85, Icon:SiVuedotjs,    c:"#42B883" },
-  { name:"Node.js",         pct:80, Icon:SiNodedotjs,   c:"#68A063" },
-  { name:"GraphQL",         pct:82, Icon:SiGraphql,     c:"#E10098" },
-  { name:"Figma",           pct:93, Icon:SiFigma,       c:"#F24E1E" },
-  { name:"Docker",          pct:75, Icon:SiDocker,      c:"#2496ED" },
-  { name:"Git",             pct:96, Icon:SiGit,         c:"#F05032" },
-  { name:"Next.js",         pct:94, Icon:SiNextdotjs,   c:"#a3a3a3" },
+  { name: "HTML",           pct: 100, Icon: SiReact,      c: "#E44D26" },
+  { name: "CSS",            pct: 100, Icon: SiTailwindcss,c: "#1572B6" },
+  { name: "Sass / SCSS",    pct: 95,  Icon: SiTailwindcss,c: "#CC6699" },
+  { name: "Tailwind CSS",   pct: 98,  Icon: SiTailwindcss,c: "#38BDF8" },
+  { name: "Jekyll",         pct: 85,  Icon: SiGit,        c: "#CC0000" },
+  { name: "Bootstrap",      pct: 100, Icon: SiTailwindcss,c: "#7952B3" },
+  { name: "JavaScript",     pct: 90,  Icon: SiReact,      c: "#F7DF1E" },
+  { name: "React / Node",   pct: 90,  Icon: SiNodedotjs,  c: "#61DAFB" },
+  { name: "Photoshop",      pct: 90,  Icon: SiFigma,      c: "#31A8FF" },
+  { name: "Illustrator",    pct: 90,  Icon: SiFigma,      c: "#FF9A00" },
+  { name: "Drupal",         pct: 90,  Icon: SiGit,        c: "#0678BE" },
+  { name: "Laravel",        pct: 90,  Icon: SiDocker,     c: "#FF2D20" },
 ];
 
 const PROJECTS = [
@@ -862,151 +870,56 @@ function Navbar({ theme, onToggle }:
 
 // ─── Hero ─────────────────────────────────────────────────────────────────────
 function Hero({ theme }: { theme: Theme }) {
-  const d = theme === "dark";
-  const [sy, setSy] = useState(0);
-  const [mx, setMx] = useState(0);
-
-  useEffect(() => {
-    const fn = () => setSy(window.scrollY);
-    window.addEventListener("scroll", fn, {passive:true});
-    return () => window.removeEventListener("scroll", fn);
-  }, []);
-
-  const opac = Math.max(0, 1 - sy / 580);
+  const isDark = theme === "dark";
+  const accent = isDark ? "#3b82f6" : "#2563eb";
 
   return (
-    <section id="home"
-      className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden"
-      style={{ background:d?"linear-gradient(160deg,#030712 60%,#070c1f)":"linear-gradient(160deg,#f7f8fc 60%,#eef2ff)" }}
-      onMouseMove={e => setMx((e.clientX/window.innerWidth - 0.5) * 20)}>
+    <section id="home" className="relative min-h-[100vh] flex items-center justify-center overflow-hidden">
+      {/* Dynamic Noise Grain Overlay */}
+      <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }} />
 
-      <Orb col="#3b82f6" w={720} h={580} x="-14%" y="-12%" delay={0}/>
-      <Orb col="#8b5cf6" w={620} h={520} x="58%"  y="28%"  delay={2}/>
-      <Orb col="#06b6d4" w={440} h={440} x="24%"  y="62%"  delay={5}/>
+      <div className="relative z-10 w-full max-w-[90rem] px-8 flex flex-col items-center">
+        {/* Kinetic Name Reveal */}
+        <div className="flex flex-col items-center">
+          <motion.h1
+            initial={{ opacity: 0 }} animate={{ opacity: 1 }}
+            className="text-[clamp(6rem,20vw,18rem)] font-black tracking-[-0.05em] leading-[0.7]"
+            style={{ color: isDark ? "rgba(255,255,255,0.05)" : "rgba(0,0,0,0.05)" }}
+          >
+            ANIKET
+          </motion.h1>
 
-      {/* Grid */}
-      <div className="absolute inset-0 pointer-events-none" style={{
-        backgroundImage:`linear-gradient(rgba(59,130,246,${d?.03:.052}) 1px,transparent 1px),`
-          +`linear-gradient(90deg,rgba(59,130,246,${d?.03:.052}) 1px,transparent 1px)`,
-        backgroundSize:"80px 80px",
-      }}/>
-
-      {/* Content */}
-      <div className="relative z-10 w-full max-w-6xl mx-auto px-8 text-center"
-        style={{ transform:`translateY(${sy*.34}px)`, opacity:opac }}>
-
-        {/* Available badge */}
-        <motion.div className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 mb-14 text-xs font-medium"
-          style={{ fontFamily:SF, ...gls(theme), color:d?"rgba(238,242,255,0.72)":"rgba(12,15,29,0.62)" }}
-          initial={{ opacity:0, y:14 }} animate={{ opacity:1, y:0 }}
-          transition={{ duration:0.65, delay:0.1, ease:EASE }}>
-          <motion.span className="w-1.5 h-1.5 rounded-full" style={{ background:"#22c55e" }}
-            animate={{ scale:[1,1.5,1], opacity:[1,0.5,1] }}
-            transition={{ duration:2.4, repeat:Infinity }}/>
-          Available for new opportunities
-        </motion.div>
-
-        {/* ANIKET TYAGI — the centrepiece */}
-        <div style={{ transform:`translateX(${mx}px)`, transition:"transform 0.1s ease-out" }}>
-          {["ANIKET","TYAGI"].map((word, wi) => (
-            <motion.h1 key={word} className="block font-black tracking-tight"
-              style={{
-                fontFamily:DF,
-                fontSize:"clamp(4.5rem,13vw,10rem)",
-                letterSpacing:"-0.038em",
-                lineHeight:0.9,
-                background: d
-                  ? wi===0
-                    ? "linear-gradient(150deg,#ffffff 30%,rgba(238,242,255,0.62))"
-                    : "linear-gradient(150deg,rgba(238,242,255,0.8),rgba(59,130,246,0.72))"
-                  : wi===0
-                    ? "linear-gradient(150deg,#0c0f1d 30%,#1e293b)"
-                    : "linear-gradient(150deg,#1e293b,rgba(59,130,246,0.88))",
-                WebkitBackgroundClip:"text", WebkitTextFillColor:"transparent", backgroundClip:"text",
-              }}
-              initial={{ opacity:0, y:52, filter:"blur(14px)" }}
-              animate={{ opacity:1, y:0,  filter:"blur(0px)" }}
-              transition={{ duration:1.0, delay:0.26+wi*0.14, ease:EASE }}>
-              {word}
-            </motion.h1>
-          ))}
+          <motion.div
+            initial={{ y: 200, opacity: 0 }} animate={{ y: 0, opacity: 1 }}
+            transition={{ type: "spring", stiffness: 100, damping: 20 }}
+            className="absolute z-20 text-[clamp(4rem,15vw,12rem)] font-black tracking-tighter"
+            style={{ color: accent }}
+          >
+            TYAGI
+          </motion.div>
         </div>
 
-        {/* Rule */}
-        <motion.div className="w-20 h-px mx-auto my-8"
-          style={{ background:`linear-gradient(90deg,transparent,${BLUE},transparent)` }}
-          initial={{ scaleX:0, opacity:0 }} animate={{ scaleX:1, opacity:1 }}
-          transition={{ duration:0.75, delay:0.68, ease:EASE }}/>
+        {/* Floating Interactive Panel */}
+        <motion.div
+          initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.8 }}
+          className="mt-24 w-full flex flex-col md:flex-row justify-center items-center gap-12"
+        >
+          <p className="text-xl font-light tracking-[0.2em] uppercase max-w-sm text-center">
+            Architecting high-frequency interface systems.
+          </p>
 
-        {/* Role */}
-        <motion.p className="mb-14 font-medium tracking-widest uppercase text-sm"
-          style={{ fontFamily:SF, letterSpacing:"0.14em",
-            color:d?"rgba(238,242,255,0.48)":"rgba(12,15,29,0.46)" }}
-          initial={{ opacity:0, y:14 }} animate={{ opacity:1, y:0 }}
-          transition={{ duration:0.7, delay:0.52, ease:EASE }}>
-          Frontend Developer &amp; UI/UX Designer
-        </motion.p>
-
-        {/* CTAs */}
-        <motion.div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-20"
-          initial={{ opacity:0, y:18 }} animate={{ opacity:1, y:0 }}
-          transition={{ duration:0.7, delay:0.68, ease:EASE }}>
-          <Mag>
-            <motion.button
-              onClick={() => document.getElementById("projects")?.scrollIntoView({behavior:"smooth"})}
-              className="items-center gap-2 px-6 py-3 rounded-2xl text-[0.875rem] font-semibold text-white hidden"
-              style={{ fontFamily:SF, background:`linear-gradient(135deg,${BLUE},${PURPLE})`,
-                boxShadow:"0 4px 22px rgba(59,130,246,0.42)" }}
-              whileHover={{ scale:1.05, y:-2, boxShadow:"0 8px 30px rgba(59,130,246,0.6)" }}
-              whileTap={{ scale:0.97 }} data-h>
-              View Work <FiArrowUpRight size={15}/>
-            </motion.button>
-          </Mag>
-          <Mag>
-            <motion.button
-              onClick={() => document.getElementById("contact")?.scrollIntoView({behavior:"smooth"})}
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-2xl text-[0.875rem] font-semibold"
-              style={{ fontFamily:SF, ...gls(theme), color:d?"#eef2ff":"#0c0f1d" }}
-              whileHover={{ scale:1.05 }} whileTap={{ scale:0.97 }} data-h>
-              Let&apos;s Talk <FiMail size={14}/>
-            </motion.button>
-          </Mag>
-        </motion.div>
-
-        {/* Stats */}
-        <motion.div className="flex-wrap items-center justify-center border-t border-b hidden"
-          style={{ borderColor:d?"rgba(255,255,255,0.06)":"rgba(12,15,29,0.07)" }}
-          initial={{ opacity:0 }} animate={{ opacity:1 }}
-          transition={{ duration:0.8, delay:0.88, ease:EASE }}>
-          {STATS.map((s, i) => (
-            <div key={s.v} className="px-10 py-5 text-center" style={{
-              borderRight: i<STATS.length-1
-                ? `1px solid ${d?"rgba(255,255,255,0.06)":"rgba(12,15,29,0.07)"}` : undefined }}>
-              <div className="font-black text-2xl leading-none mb-1"
-                style={{ fontFamily:DF, background:`linear-gradient(135deg,${BLUE},${CYAN})`,
-                  WebkitBackgroundClip:"text", WebkitTextFillColor:"transparent", backgroundClip:"text" }}>
-                {s.v}
-              </div>
-              <div className="text-xs"
-                style={{ fontFamily:SF, color:d?"rgba(238,242,255,0.36)":"rgba(12,15,29,0.38)" }}>
-                {s.l}
-              </div>
-            </div>
-          ))}
+          <button
+            onClick={() => document.getElementById("contact")?.scrollIntoView({behavior:"smooth"})}
+            className="group relative px-12 py-6 border border-white/10 overflow-hidden"
+          >
+            <span className="relative z-10 font-bold uppercase tracking-[0.3em] text-xs">Initiate_Handshake</span>
+            <div className="absolute inset-0 bg-blue-600 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
+          </button>
         </motion.div>
       </div>
 
-      {/* Scroll cue */}
-      <motion.div className="absolute bottom-9 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5"
-        initial={{ opacity:0 }} animate={{ opacity:opac }} transition={{ delay:1.6 }}>
-        <span className="text-[0.68rem] tracking-[0.2em] uppercase"
-          style={{ fontFamily:MF, color:d?"rgba(238,242,255,0.26)":"rgba(12,15,29,0.28)" }}>
-          Scroll
-        </span>
-        <motion.div animate={{ y:[0,7,0] }} transition={{ duration:1.9, repeat:Infinity }}>
-          <FiChevronDown size={15} color={d?"rgba(238,242,255,0.26)":"rgba(12,15,29,0.28)"}/>
-        </motion.div>
-      </motion.div>
+      {/* Decorative Circular HUD Lines */}
+      <div className="absolute -bottom-48 -left-48 w-96 h-96 border border-blue-500/20 rounded-full animate-spin-slow" />
     </section>
   );
 }
@@ -1016,82 +929,57 @@ function About({ theme }: { theme: Theme }) {
   const d = theme === "dark";
   return (
     <Sec id="about" theme={theme}>
-      <Orb col="#8b5cf6" w={540} h={540} x="68%" y="-8%" delay={1}/>
       <div className="max-w-6xl mx-auto px-8">
-        <div className="grid lg:grid-cols-2 gap-16 items-start">
-          {/* Text */}
-          <div>
-            <SH eye="// About" title={"I build interfaces that\nfeel alive."} theme={theme}/>
-            <motion.div variants={fadeUp} initial="hidden" whileInView="visible"
-              viewport={{ once:true }} transition={tx(0.1)}>
-              <p className="leading-[1.78] mb-4"
-                style={{ fontFamily:SF, fontSize:"0.9375rem",
-                  color:d?"rgba(238,242,255,0.56)":"rgba(12,15,29,0.56)" }}>
-                With 8+ years at the intersection of design and engineering, I&apos;ve shipped
-                products used by millions at Vercel, Stripe, and Linear. I specialise in turning
-                complex problems into elegant, intuitive experiences.
-              </p>
-              <p className="leading-[1.78] mb-10"
-                style={{ fontFamily:SF, fontSize:"0.9375rem",
-                  color:d?"rgba(238,242,255,0.42)":"rgba(12,15,29,0.43)" }}>
-                The best interfaces are invisible — they guide users naturally so content can shine.
-                That philosophy drives every decision I make.
-              </p>
-              <div className="grid grid-cols-2 gap-3">
-                {STATS.map((s, i) => (
-                  <motion.div key={s.v}
-                    className="p-5 rounded-2xl group relative overflow-hidden"
-                    style={gls(theme)}
-                    variants={fadeUp} initial="hidden" whileInView="visible"
-                    viewport={{ once:true }} transition={tx(0.18+i*0.07)}
-                    whileHover={{ y:-3, scale:1.02 }}>
-                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-                      style={{ background:"radial-gradient(circle at 20% 50%,rgba(59,130,246,0.08),transparent 70%)" }}/>
-                    <span className="block text-2xl font-black mb-1"
-                      style={{ fontFamily:DF, background:`linear-gradient(135deg,${BLUE},${CYAN})`,
-                        WebkitBackgroundClip:"text", WebkitTextFillColor:"transparent", backgroundClip:"text" }}>
-                      {s.v}
-                    </span>
-                    <span className="block text-xs"
-                      style={{ fontFamily:SF, color:d?"rgba(238,242,255,0.4)":"rgba(12,15,29,0.44)" }}>
-                      {s.l}
-                    </span>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
-          </div>
+        <div className="grid lg:grid-cols-12 gap-12 items-center">
 
-          {/* Photo + Resume card */}
-          <div className="space-y-5">
-            <motion.div
-              className="relative rounded-[2rem] overflow-hidden aspect-[3/4] max-w-xs mx-auto lg:mx-0"
-              style={{ boxShadow:d
-                ? "0 40px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.06)"
-                : "0 40px 80px rgba(59,130,246,0.1), 0 0 0 1px rgba(255,255,255,0.9)" }}
-              variants={fadeUp} initial="hidden" whileInView="visible"
-              viewport={{ once:true }} transition={tx(0)}>
+          {/* Left: Image with Glow Effect */}
+          <motion.div className="lg:col-span-5 relative"
+            variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once:true }}>
+            <div className="relative w-full aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl">
               <img
                 src="https://images.unsplash.com/photo-1549692520-acc6669e2f0c?w=600&h=800&fit=crop&auto=format"
-                alt="Aniket Tyagi" className="w-full h-full object-cover"/>
-              <div className="absolute inset-0" style={{ background:d
-                ? "linear-gradient(to bottom,transparent 55%,rgba(3,7,18,0.7))"
-                : "linear-gradient(to bottom,transparent 55%,rgba(247,248,252,0.5))" }}/>
-              <motion.div className="absolute bottom-5 left-5 px-4 py-3 rounded-2xl"
-                style={gls(theme)}
-                animate={{ y:[0,-7,0] }}
-                transition={{ duration:4.2, repeat:Infinity, ease:"easeInOut" }}>
-                <span className="block text-xl font-black" style={{ fontFamily:DF, color:BLUE }}>8+</span>
-                <span className="block text-xs"
-                  style={{ fontFamily:SF, color:d?"rgba(238,242,255,0.44)":"rgba(12,15,29,0.44)" }}>
-                  Years of craft
-                </span>
-              </motion.div>
-            </motion.div>
-            <div className="max-w-xs mx-auto lg:mx-0">
-              <ResumeCard theme={theme}/>
+                alt="Aniket Tyagi"
+                className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
             </div>
-          </div>
+            {/* Floating Badge */}
+            <motion.div className="absolute -bottom-6 -right-6 p-6 rounded-2xl" style={gls(theme)}>
+              <span className="text-3xl font-black text-blue-500">8+</span>
+              <p className="text-xs opacity-70">Years of Experience</p>
+            </motion.div>
+          </motion.div>
+
+          {/* Right: Content */}
+          <motion.div className="lg:col-span-7"
+            variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once:true }} transition={{ delay: 0.2 }}>
+            <p className="text-blue-500 font-semibold mb-3 tracking-widest uppercase text-sm">// Who I Am</p>
+            <h2 className="text-4xl md:text-5xl font-bold mb-8 leading-tight">
+              Transforming complex ideas into <span className="text-blue-500">elegant interfaces.</span>
+            </h2>
+
+            <div className="space-y-6 text-lg opacity-80 leading-relaxed">
+              <p>
+                Hi, I'm Aniket Tyagi. I specialize in bridging the gap between design and development.
+                With over 8 years in the field, I craft digital experiences that are not only visually
+                stunning but also performance-driven.
+              </p>
+              <p>
+                My expertise spans across frontend technologies, UI/UX systems, and graphic design.
+                I believe in writing clean, scalable code and designing interfaces that feel intuitive
+                and alive to the end-user.
+              </p>
+            </div>
+
+            {/* Quick Skills List */}
+            <div className="mt-10 flex flex-wrap gap-3">
+              {['Frontend Development', 'UI/UX Design', 'Jekyll', 'Tailwind CSS'].map((skill) => (
+                <span key={skill} className="px-4 py-2 rounded-full text-sm font-medium border border-blue-500/30 bg-blue-500/10 text-blue-500">
+                  {skill}
+                </span>
+              ))}
+            </div>
+          </motion.div>
         </div>
       </div>
     </Sec>
@@ -1104,7 +992,7 @@ function Experience({ theme }: { theme: Theme }) {
   return (
     <Sec id="experience" theme={theme} alt>
       <Orb col="#06b6d4" w={500} h={500} x="-9%" y="35%" delay={1}/>
-      {/* <div className="max-w-6xl mx-auto px-8">
+      <div className="max-w-6xl mx-auto px-8">
         <SH eye="// Journey" title="Work Experience"
           sub="Eight years building products that scale, delight, and endure." theme={theme}/>
         <div className="relative space-y-5">
@@ -1159,7 +1047,7 @@ function Experience({ theme }: { theme: Theme }) {
             </motion.div>
           ))}
         </div>
-      </div> */}
+      </div>
     </Sec>
   );
 }

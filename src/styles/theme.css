@@ -193,8 +193,6 @@
   }
 }
 #projects,
-#experience,
-#skills,
 #testimonials {
     display: none !important;
 }
