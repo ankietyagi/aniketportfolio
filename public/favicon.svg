@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+  <rect width="64" height="64" fill="transparent" />
+  <g transform="translate(6,6)">
+    <rect x="0" y="0" width="52" height="52" rx="8" fill="#0a0a0a" />
+    <text x="26" y="36" text-anchor="middle" fill="#E1FF00" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="28">AT</text>
+  </g>
+</svg>

@@ -89,8 +89,8 @@ const experienceData = [
 ];
 
 const skills = [
-  "HTML", "CSS", "Bootstrap", "Tailwind CSS", "SCSS", "JavaScript", "React", "Node.js", 
-  "Laravel", "Drupal", "Photoshop", "Illustrator", "TypeScript", "Next.js", "Vue.js", 
+  "HTML", "CSS", "Bootstrap", "Tailwind CSS", "SCSS", "JavaScript", "React", "Node.js",
+  "Laravel", "Drupal", "Photoshop", "Illustrator", "TypeScript", "Next.js", "Vue.js",
   "GraphQL", "GSAP", "Figma", "Three.js", "Supabase", "Docker", "AWS"
 ];
 
@@ -117,7 +117,7 @@ const Loader = ({ onComplete }: { onComplete: () => void }) => {
       className="fixed inset-0 z-50 flex items-end justify-end p-8 bg-[#0a0a0a] text-[#E1FF00]"
       exit={{ y: "-100%", transition: { duration: 1, ease: [0.76, 0, 0.24, 1] } }}
     >
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         className="text-[15vw] font-black leading-none tracking-tighter"
@@ -131,7 +131,7 @@ const Loader = ({ onComplete }: { onComplete: () => void }) => {
 const PortfolioContent = () => {
   const { scrollYProgress } = useScroll();
   const scaleY = useSpring(scrollYProgress, { stiffness: 100, damping: 30, restDelta: 0.001 });
-  
+
   const heroTextRef = useRef(null);
   const { scrollYProgress: heroScroll } = useScroll({ target: heroTextRef, offset: ["start start", "end start"] });
   const y1 = useTransform(heroScroll, [0, 1], ["0%", "50%"]);
@@ -146,22 +146,36 @@ const PortfolioContent = () => {
       />
 
       {/* Header */}
-      <motion.header 
+      <motion.header
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 1, duration: 1 }}
         className="fixed top-0 left-0 right-0 z-30 p-6 md:p-10 flex justify-between items-center mix-blend-difference text-white"
       >
         <div className="text-xl font-bold tracking-tighter hover-trigger">AT.®</div>
-        <a href="mailto:anityagi8860@gmail.com" className="text-sm font-medium hover:line-through transition-all hover-trigger uppercase tracking-widest">
-          Available for work
-        </a>
+
+        <div className="flex items-center gap-4">
+          <a
+            href="/UpdatedCV.pdf"
+            download="Aniket_Tyagi_Resume.pdf"
+            aria-label="Download Resume"
+            className="inline-flex items-center gap-2 px-4 py-2 border border-[#E1FF00] text-[#E1FF00] rounded-lg font-medium hover:bg-[#E1FF00] hover:text-black transition-colors relative overflow-hidden bulb"
+          >
+            <Download size={16} />
+            Resume
+            <span className="absolute right-2 top-1/2 -translate-y-1/2 w-2 h-2 bg-[#E1FF00] rounded-full bulb-spark" />
+          </a>
+
+          <a href="mailto:anityagi8860@gmail.com" className="text-sm font-medium hover:line-through transition-all hover-trigger uppercase tracking-widest">
+            Available for work
+          </a>
+        </div>
       </motion.header>
 
       {/* Hero Section */}
       <section ref={heroTextRef} className="relative h-screen flex flex-col justify-center px-6 md:px-10 pt-20 overflow-hidden">
         <motion.div style={{ y: y1, opacity: opacity1 }} className="relative z-10 w-full">
-          <motion.div 
+          <motion.div
             variants={staggerContainer}
             initial="hidden"
             animate="visible"
@@ -172,14 +186,14 @@ const PortfolioContent = () => {
             </div>
             <div className="overflow-hidden flex items-center gap-4 md:gap-8">
               <motion.div variants={fadeUp}>Tyagi</motion.div>
-              <motion.div 
+              <motion.div
                 variants={fadeUp}
                 className="hidden md:block w-32 h-32 lg:w-48 lg:h-48 rounded-full border-4 border-[#E1FF00] shrink-0"
               />
             </div>
           </motion.div>
 
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.5, duration: 1 }}
@@ -190,8 +204,8 @@ const PortfolioContent = () => {
         </motion.div>
 
         {/* Background Grid */}
-        <div className="absolute inset-0 z-0 opacity-20" 
-             style={{ backgroundImage: 'linear-gradient(#333 1px, transparent 1px), linear-gradient(90deg, #333 1px, transparent 1px)', backgroundSize: '40px 40px' }} 
+        <div className="absolute inset-0 z-0 opacity-20"
+             style={{ backgroundImage: 'linear-gradient(#333 1px, transparent 1px), linear-gradient(90deg, #333 1px, transparent 1px)', backgroundSize: '40px 40px' }}
         />
       </section>
 
@@ -210,7 +224,7 @@ const PortfolioContent = () => {
 
       {/* Marquee Skills */}
       <section className="py-20 bg-[#E1FF00] text-black overflow-hidden relative flex flex-col gap-4">
-        <motion.div 
+        <motion.div
           animate={{ x: ["0%", "-50%"] }}
           transition={{ ease: "linear", duration: 25, repeat: Infinity }}
           className="flex whitespace-nowrap text-6xl md:text-9xl font-black uppercase tracking-tighter"
@@ -219,7 +233,7 @@ const PortfolioContent = () => {
             <span key={i} className="mr-8 md:mr-16 hover-trigger transition-all hover:text-white">{skill} • </span>
           ))}
         </motion.div>
-        <motion.div 
+        <motion.div
           animate={{ x: ["-50%", "0%"] }}
           transition={{ ease: "linear", duration: 30, repeat: Infinity }}
           className="flex whitespace-nowrap text-6xl md:text-9xl font-black uppercase tracking-tighter"
@@ -234,10 +248,10 @@ const PortfolioContent = () => {
       <section className="bg-[#0a0a0a] text-white py-32 px-6 md:px-10 relative">
         <div className="max-w-6xl mx-auto relative">
           <h2 className="text-5xl md:text-7xl font-black mb-20 uppercase tracking-tighter">Experience</h2>
-          
+
           <div className="space-y-4 md:space-y-0 md:relative w-full">
             {experienceData.map((exp, i) => (
-              <motion.div 
+              <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -275,7 +289,7 @@ const PortfolioContent = () => {
             </div>
             <div className="flex flex-col gap-6">
               {["UI / UX Design", "Frontend Development", "Landing Pages", "Dashboard Design", "Responsive Builds"].map((service, i) => (
-                <motion.div 
+                <motion.div
                   key={i}
                   whileHover={{ scale: 0.98, backgroundColor: "#E1FF00" }}
                   className="p-8 border-b-2 border-black flex justify-between items-center group cursor-pointer hover-trigger transition-colors rounded-xl"
@@ -299,26 +313,26 @@ const PortfolioContent = () => {
               Let's Talk ↗
             </a>
           </div>
-          
+
           <div className="flex flex-col md:flex-row justify-between items-end pb-8 gap-8 border-t border-white/10 pt-8 mt-auto">
             <div className="flex gap-6 hover-trigger">
               <a href="#" className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center hover:bg-[#E1FF00] hover:text-black hover:border-[#E1FF00] transition-all"><Github size={20} /></a>
               <a href="#" className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center hover:bg-[#E1FF00] hover:text-black hover:border-[#E1FF00] transition-all"><Linkedin size={20} /></a>
               <a href="#" className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center hover:bg-[#E1FF00] hover:text-black hover:border-[#E1FF00] transition-all"><Twitter size={20} /></a>
             </div>
-            
+
             <div className="text-right">
               <div className="font-mono text-sm text-gray-500 mb-2">Location</div>
               <div className="text-lg">Uttar Pradesh, India</div>
             </div>
-            
+
             <div className="text-right">
               <div className="text-sm font-medium text-gray-500">© 2025 Aniket Tyagi</div>
               <div className="text-xs text-gray-700 mt-1">All rights reserved</div>
             </div>
           </div>
         </div>
-        
+
         {/* The spacer that forces the page to scroll past the fixed footer behind it */}
         <div className="h-screen w-full bg-transparent"></div>
       </footer>
@@ -339,7 +353,7 @@ export default function App() {
       </AnimatePresence>
 
       {!loading && <PortfolioContent />}
-      
+
       <style dangerouslySetInnerHTML={{__html: `
         .outline-text {
           color: transparent;
@@ -352,6 +366,46 @@ export default function App() {
           body {
             cursor: auto;
           }
+        }
+        .spark {
+          animation: spark-pulse 6s infinite ease-in-out;
+          box-shadow: 0 0 6px rgba(225,255,0,0.6);
+        }
+
+        @keyframes spark-pulse {
+          0% { transform: scale(0.6) translateX(0); opacity: 0.35; box-shadow: 0 0 0 rgba(225,255,0,0); }
+          10% { transform: scale(1.2) translateX(-2px); opacity: 1; box-shadow: 0 0 10px rgba(225,255,0,0.9); }
+          20% { transform: scale(0.8) translateX(2px); opacity: 0.6; box-shadow: 0 0 0 rgba(225,255,0,0); }
+          100% { transform: scale(0.6) translateX(0); opacity: 0.35; box-shadow: 0 0 0 rgba(225,255,0,0); }
+        }
+        .bulb {
+          animation: bulb-shake 10s infinite ease-in-out;
+          will-change: transform, opacity;
+        }
+
+        .bulb-spark {
+          animation: bulb-flicker 10s infinite ease-in-out;
+          box-shadow: 0 0 6px rgba(225,255,0,0.6);
+        }
+
+        @keyframes bulb-shake {
+          0% { transform: translateX(0) scale(1); opacity: 1; }
+          3% { transform: translateX(-3px) scale(1.02); opacity: 0.92; }
+          6% { transform: translateX(3px) scale(0.98); opacity: 0.95; }
+          12% { transform: translateX(-2px) scale(1.01); opacity: 0.93; }
+          20% { transform: translateX(0) scale(1); opacity: 1; }
+          100% { transform: translateX(0) scale(1); opacity: 1; }
+        }
+
+        @keyframes bulb-flicker {
+          0% { opacity: 0.3; transform: scale(0.6); box-shadow: 0 0 0 rgba(225,255,0,0); }
+          5% { opacity: 1; transform: scale(1.2); box-shadow: 0 0 8px rgba(225,255,0,0.9); }
+          8% { opacity: 0.6; transform: scale(0.9); box-shadow: 0 0 0 rgba(225,255,0,0); }
+          100% { opacity: 0.3; transform: scale(0.6); box-shadow: 0 0 0 rgba(225,255,0,0); }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          .bulb, .bulb-spark, .spark { animation: none !important; }
         }
       `}} />
     </div>
