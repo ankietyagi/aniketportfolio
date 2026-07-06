@@ -153,23 +153,9 @@ const PortfolioContent = () => {
         className="fixed top-0 left-0 right-0 z-30 p-6 md:p-10 flex justify-between items-center mix-blend-difference text-white"
       >
         <div className="text-xl font-bold tracking-tighter hover-trigger">AT.®</div>
-
-        <div className="flex items-center gap-4">
-          <a
-            href="/UpdatedCV.pdf"
-            download="Aniket_Tyagi_Resume.pdf"
-            aria-label="Download Resume"
-            className="inline-flex items-center gap-2 px-4 py-2 border border-[#E1FF00] text-[#E1FF00] rounded-lg font-medium hover:bg-[#E1FF00] hover:text-black transition-colors relative overflow-hidden bulb"
-          >
-            <Download size={16} />
-            Resume
-            <span className="absolute right-2 top-1/2 -translate-y-1/2 w-2 h-2 bg-[#E1FF00] rounded-full bulb-spark" />
-          </a>
-
-          <a href="mailto:anityagi8860@gmail.com" className="text-sm font-medium hover:line-through transition-all hover-trigger uppercase tracking-widest">
-            Available for work
-          </a>
-        </div>
+        <a href="mailto:anityagi8860@gmail.com" className="text-sm font-medium hover:line-through transition-all hover-trigger uppercase tracking-widest">
+          Available for work
+        </a>
       </motion.header>
 
       {/* Hero Section */}
@@ -366,46 +352,6 @@ export default function App() {
           body {
             cursor: auto;
           }
-        }
-        .spark {
-          animation: spark-pulse 6s infinite ease-in-out;
-          box-shadow: 0 0 6px rgba(225,255,0,0.6);
-        }
-
-        @keyframes spark-pulse {
-          0% { transform: scale(0.6) translateX(0); opacity: 0.35; box-shadow: 0 0 0 rgba(225,255,0,0); }
-          10% { transform: scale(1.2) translateX(-2px); opacity: 1; box-shadow: 0 0 10px rgba(225,255,0,0.9); }
-          20% { transform: scale(0.8) translateX(2px); opacity: 0.6; box-shadow: 0 0 0 rgba(225,255,0,0); }
-          100% { transform: scale(0.6) translateX(0); opacity: 0.35; box-shadow: 0 0 0 rgba(225,255,0,0); }
-        }
-        .bulb {
-          animation: bulb-shake 10s infinite ease-in-out;
-          will-change: transform, opacity;
-        }
-
-        .bulb-spark {
-          animation: bulb-flicker 10s infinite ease-in-out;
-          box-shadow: 0 0 6px rgba(225,255,0,0.6);
-        }
-
-        @keyframes bulb-shake {
-          0% { transform: translateX(0) scale(1); opacity: 1; }
-          3% { transform: translateX(-3px) scale(1.02); opacity: 0.92; }
-          6% { transform: translateX(3px) scale(0.98); opacity: 0.95; }
-          12% { transform: translateX(-2px) scale(1.01); opacity: 0.93; }
-          20% { transform: translateX(0) scale(1); opacity: 1; }
-          100% { transform: translateX(0) scale(1); opacity: 1; }
-        }
-
-        @keyframes bulb-flicker {
-          0% { opacity: 0.3; transform: scale(0.6); box-shadow: 0 0 0 rgba(225,255,0,0); }
-          5% { opacity: 1; transform: scale(1.2); box-shadow: 0 0 8px rgba(225,255,0,0.9); }
-          8% { opacity: 0.6; transform: scale(0.9); box-shadow: 0 0 0 rgba(225,255,0,0); }
-          100% { opacity: 0.3; transform: scale(0.6); box-shadow: 0 0 0 rgba(225,255,0,0); }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-          .bulb, .bulb-spark, .spark { animation: none !important; }
         }
       `}} />
     </div>
