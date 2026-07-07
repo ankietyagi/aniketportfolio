@@ -208,27 +208,32 @@ const PortfolioContent = () => {
         </div>
       </section>
 
-      {/* Marquee Skills */}
-      <section className="py-20 bg-[#E1FF00] text-black overflow-hidden relative flex flex-col gap-4">
-        <motion.div
-          animate={{ x: ["0%", "-50%"] }}
-          transition={{ ease: "linear", duration: 25, repeat: Infinity }}
-          className="flex whitespace-nowrap text-6xl md:text-9xl font-black uppercase tracking-tighter"
-        >
-          {[...skills, ...skills].map((skill, i) => (
-            <span key={i} className="mr-8 md:mr-16 hover-trigger transition-all hover:text-white">{skill} • </span>
-          ))}
-        </motion.div>
-        <motion.div
-          animate={{ x: ["-50%", "0%"] }}
-          transition={{ ease: "linear", duration: 30, repeat: Infinity }}
-          className="flex whitespace-nowrap text-6xl md:text-9xl font-black uppercase tracking-tighter"
-        >
-          {[...skills, ...skills].reverse().map((skill, i) => (
-            <span key={i} className="mr-8 md:mr-16 hover-trigger transition-all hover:text-white outline-text">{skill} • </span>
-          ))}
-        </motion.div>
-      </section>
+    {/* Marquee Skills */}
+    <section className="py-20 bg-[#E1FF00] text-black overflow-hidden relative flex flex-col gap-4">
+    <motion.div
+        animate={{ x: ["0%", "-50%"] }}
+        transition={{ ease: "linear", duration: 30, repeat: Infinity }}
+        className="flex whitespace-nowrap"
+    >
+        {[...skills, ...skills].map((skill, i) => (
+        <span key={i} className="text-6xl md:text-9xl font-black uppercase tracking-tighter mr-8 md:mr-16 shrink-0 hover-trigger transition-all hover:text-white">
+            {skill} •
+        </span>
+        ))}
+    </motion.div>
+
+    <motion.div
+        animate={{ x: ["-50%", "0%"] }}
+        transition={{ ease: "linear", duration: 35, repeat: Infinity }}
+        className="flex whitespace-nowrap"
+    >
+        {[...skills, ...skills].reverse().map((skill, i) => (
+        <span key={i} className="text-6xl md:text-9xl font-black uppercase tracking-tighter mr-8 md:mr-16 shrink-0 hover-trigger transition-all hover:text-white outline-text">
+            {skill} •
+        </span>
+        ))}
+    </motion.div>
+    </section>
 
       {/* Experience Section (Sticky Cards) */}
       <section className="bg-[#0a0a0a] text-white py-32 px-6 md:px-10 relative">
