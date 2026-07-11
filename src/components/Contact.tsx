@@ -57,14 +57,29 @@ export default function Contact() {
   }, [])
 
   // Modal Enter Animation
-  useEffect(() => {
-    if (showModal && modalRef.current) {
-      gsap.fromTo(modalRef.current,
-        { opacity: 0, scale: 0.8, y: 30, filter: 'blur(10px)' },
-        { opacity: 1, scale: 1, y: 0, filter: 'blur(0px)', duration: 0.6, ease: 'back.out(1.5)' }
-      )
+useEffect(() => {
+  if (showModal) {
+    const scrollY = window.scrollY
+
+    document.body.style.position = 'fixed'
+    document.body.style.top = `-${scrollY}px`
+    document.body.style.width = '100%'
+    document.body.style.overflow = 'hidden'
+
+    document.documentElement.style.overflow = 'hidden'
+
+    return () => {
+      document.body.style.position = ''
+      document.body.style.top = ''
+      document.body.style.width = ''
+      document.body.style.overflow = ''
+
+      document.documentElement.style.overflow = ''
+
+      window.scrollTo(0, scrollY)
     }
-  }, [showModal])
+  }
+}, [showModal])
 
   // Top-Notch Magnetic Hover Logic
   const handleMagneticMove = (e: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>) => {
@@ -120,12 +135,18 @@ export default function Contact() {
   }
 
   // Handle Modal Close Animation before unmounting
-  const closeModal = () => {
-    gsap.to(modalRef.current, {
-      opacity: 0, scale: 0.9, y: -20, duration: 0.3, ease: 'power2.in',
-      onComplete: () => setShowModal(false)
-    })
-  }
+const closeModal = () => {
+  gsap.to(modalRef.current, {
+    opacity: 0,
+    scale: 0.9,
+    y: 20,
+    duration: 0.3,
+    ease: 'power2.in',
+    onComplete: () => {
+      setShowModal(false)
+    },
+  })
+}
 
   return (
     <section id="contact" ref={sectionRef} className="section" style={{ position: 'relative', overflow: 'hidden', borderTop: '1px solid var(--border)', padding: '100px 0', background: 'var(--bg)', perspective: '1000px' }}>
@@ -183,11 +204,20 @@ export default function Contact() {
 
         /* Modal Overlay */
         .modal-overlay {
-          position: fixed; inset: 0; z-index: 99999;
-          background: color-mix(in srgb, var(--bg) 80%, transparent);
-          backdrop-filter: blur(15px);
-          display: flex; alignItems: center; justify-content: center;
-          padding: 20px; opacity: 0; animation: fadeOverlay 0.4s forwards;
+        position: fixed;
+        inset: 0;
+        z-index: 99999;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        padding: 24px;
+
+        background: rgba(0,0,0,0.18);
+
+        backdrop-filter: blur(25px) saturate(160%);
+        -webkit-backdrop-filter: blur(25px) saturate(160%);
         }
         @keyframes fadeOverlay { to { opacity: 1; } }
 
@@ -254,12 +284,30 @@ export default function Contact() {
       {/* SUCCESS MODAL (Interactive & Animated) */}
       {showModal && (
         <div className="modal-overlay">
-          <div ref={modalRef} style={{
-            background: 'var(--surface)', border: '1px solid color-mix(in srgb, var(--accent) 30%, transparent)',
-            borderRadius: 'var(--radius-xl)', padding: '50px 40px', maxWidth: '420px', width: '100%',
-            textAlign: 'center', boxShadow: '0 30px 60px rgba(0,0,0,0.3), inset 0 0 0 1px color-mix(in srgb, var(--accent) 10%, transparent)',
-            position: 'relative', overflow: 'hidden'
-          }}>
+<div ref={modalRef} style={{
+  width: '100%',
+  maxWidth: '460px',
+
+  background: 'rgba(255,255,255,0.08)',
+
+  backdropFilter: 'blur(35px) saturate(180%)',
+  WebkitBackdropFilter: 'blur(35px) saturate(180%)',
+
+  border: '1px solid rgba(255,255,255,0.18)',
+
+  borderRadius: '28px',
+
+  padding: '50px 40px',
+
+  textAlign: 'center',
+
+  boxShadow:
+    '0 30px 80px rgba(0,0,0,0.35), inset 0 1px 1px rgba(255,255,255,0.2)',
+
+  position: 'relative',
+
+  overflow: 'hidden',
+}}>
             <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '4px', background: 'var(--accent)' }} />
 
             <div style={{
