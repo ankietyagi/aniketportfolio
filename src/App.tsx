@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import Lenis from 'lenis'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { SpeedInsights } from '@vercel/speed-insights/react'
 import Loader from './components/Loader'
 import CustomCursor from './components/CustomCursor'
 import Navbar from './components/Navbar'
@@ -60,6 +61,7 @@ export default function App() {
         </main>
         <Footer />
       </div>
+      <SpeedInsights />
     </>
   )
 }
