@@ -101,8 +101,7 @@ useEffect(() => {
     e.preventDefault()
     setIsSubmitting(true)
 
-    // =========== ACCESS KEY YAHAN PASTE KARNI HAI ===========
-    const accessKey = "YOUR_ACCESS_KEY_HERE"
+    const accessKey = "17b77822-dbb9-4a5c-9871-5652d0749a4f"
 
     try {
       const response = await fetch("https://api.web3forms.com/submit", {
