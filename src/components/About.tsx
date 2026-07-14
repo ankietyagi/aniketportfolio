@@ -176,7 +176,7 @@ export default function About() {
               <div style={{ width: '100%', height: '100%', position: 'relative', overflow: 'hidden' }}>
                 <img
                   src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1600&auto=format&fit=crop"
-                  alt="Workspace"
+                  alt="Aniket Tyagi Workspace"
                   style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'contrast(1.1) brightness(0.9)' }}
                 />
                 <div style={{

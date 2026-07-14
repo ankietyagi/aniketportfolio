@@ -1,10 +1,17 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { gsap } from 'gsap'
 
 export default function CustomCursor() {
   const cursorRef = useRef<HTMLDivElement>(null)
+  const [isDesktop, setIsDesktop] = useState(true)
 
   useEffect(() => {
+    // If it's a mobile screen or a touch device, prevent loading mouse events
+    if (window.innerWidth <= 768 || window.matchMedia("(any-pointer: coarse)").matches) {
+      setIsDesktop(false)
+      return
+    }
+
     const cursor = cursorRef.current!
 
     const onMove = (e: MouseEvent) => {
@@ -35,6 +42,9 @@ export default function CustomCursor() {
       obs.disconnect()
     }
   }, [])
+
+  // If not on desktop, do not render the custom cursor div at all
+  if (!isDesktop) return null
 
   return (
     <div

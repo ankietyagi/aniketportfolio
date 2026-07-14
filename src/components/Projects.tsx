@@ -294,7 +294,7 @@ export default function Projects() {
                 }}>
                   <img
                     src={project.image}
-                    alt={project.title}
+                    alt={`${project.title} - Aniket Tyagi Project`}
                     style={{
                       width: '100%',
                       height: '100%',

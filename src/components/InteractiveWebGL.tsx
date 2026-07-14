@@ -7,12 +7,12 @@ import { useTheme } from '../ThemeContext'
 function MorphingBlob({ dark }: { dark: boolean }) {
   const meshRef = useRef<THREE.Mesh>(null!)
   const { viewport, mouse } = useThree()
-  
+
   useFrame((state) => {
     if (meshRef.current) {
       meshRef.current.rotation.x = state.clock.elapsedTime * 0.2
       meshRef.current.rotation.y = state.clock.elapsedTime * 0.3
-      
+
       // Follow mouse slightly
       const targetX = (mouse.x * viewport.width) / 2
       const targetY = (mouse.y * viewport.height) / 2

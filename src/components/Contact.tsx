@@ -419,6 +419,7 @@ const closeModal = () => {
               <a
                 key={label}
                 href={href}
+                aria-label={`Aniket Tyagi on ${label}`}
                 className="magnetic-card anim-card"
                 onMouseMove={handleMagneticMove}
                 onMouseLeave={handleMagneticLeave}
@@ -444,7 +445,7 @@ const closeModal = () => {
 
             {/* Premium Resume Card */}
             <a
-              href="/src/imports/AniketTyagi-Resume.pdf"
+              href="/AniketTyagi-Resume.pdf"
               download
               className="magnetic-card anim-card"
               onMouseMove={handleMagneticMove}
