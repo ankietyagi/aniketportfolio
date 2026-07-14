@@ -2,30 +2,29 @@
 
 @import 'tailwindcss';
 
-/* ─── Design tokens ─────────────────────────────────────────── */
 :root {
-  /* Light mode */
   --bg:            #ffffff;
-  --bg-secondary:  #f8fafc;
-  --surface:       #f1f5f9;
-  --surface-hover: #e8edf5;
-  --border:        #e2e8f0;
-  --border-strong: #cbd5e1;
+  --bg-secondary:  #fffaf5;
+  --surface:       #fcf7f1;
+  --surface-hover: #fcefe1;
+  --border:        #e5d3c8;
+  --border-strong: #cfa893;
 
-  --text:          #0f172a;
-  --text-secondary:#334155;
-  --text-muted:    #64748b;
-  --text-faint:    #94a3b8;
+  --text:          #1a0f08;
+  --text-secondary:#3a271d;
+  --text-muted:    #5c4335;
+  --text-faint:    #856a5c;
 
-  --accent:        #4f46e5;
-  --accent-hover:  #4338ca;
-  --accent-soft:   #eef2ff;
-  --accent-text:   #4f46e5;
+  --accent:          #f97316;
+  --accent-hover:    #ea580c;
+  --accent-soft:     #fff7ed;
+  --accent-text:     #c2410c;
+  --accent-gradient: linear-gradient(135deg, #f97316 0%, #eab308 100%);
 
-  --shadow-sm:     0 1px 2px rgba(15,23,42,0.06);
-  --shadow:        0 4px 12px rgba(15,23,42,0.08), 0 1px 3px rgba(15,23,42,0.04);
-  --shadow-md:     0 8px 24px rgba(15,23,42,0.10), 0 2px 6px rgba(15,23,42,0.05);
-  --shadow-lg:     0 16px 40px rgba(15,23,42,0.12), 0 4px 10px rgba(15,23,42,0.06);
+  --shadow-sm:     0 1px 2px rgba(26, 15, 8, 0.08);
+  --shadow:        0 4px 12px rgba(26, 15, 8, 0.08), 0 1px 3px rgba(26, 15, 8, 0.04);
+  --shadow-md:     0 8px 24px rgba(26, 15, 8, 0.10), 0 2px 6px rgba(26, 15, 8, 0.05);
+  --shadow-lg:     0 16px 40px rgba(26, 15, 8, 0.12), 0 4px 10px rgba(26, 15, 8, 0.06);
 
   --radius-sm:     6px;
   --radius:        10px;
@@ -58,7 +57,6 @@
   --shadow-lg:     0 16px 40px rgba(0,0,0,0.6), 0 4px 10px rgba(0,0,0,0.4);
 }
 
-/* ─── Reset & base ───────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 html {
@@ -78,37 +76,30 @@ body {
   cursor: none;
 }
 
-/* Scrollbar */
 ::-webkit-scrollbar { width: 4px; }
 ::-webkit-scrollbar-track { background: var(--bg); }
 ::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 2px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--text-faint); }
 
-/* Selection */
 ::selection { background: var(--accent-soft); color: var(--accent); }
 
-/* Focus ring */
 :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: var(--radius-sm); }
 
-/* ─── Typography scale ───────────────────────────────────────── */
 .font-display { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
 .font-mono   { font-family: 'Geist Mono', monospace; }
 
-/* ─── Layout utils ───────────────────────────────────────────── */
 .container { max-width: 1120px; margin-inline: auto; padding-inline: 24px; }
 
 @media (min-width: 768px) {
   .container { padding-inline: 48px; }
 }
 
-/* ─── Section rhythm ─────────────────────────────────────────── */
 .section { padding-block: 96px; }
 
 @media (min-width: 768px) {
   .section { padding-block: 128px; }
 }
 
-/* ─── Tag / eyebrow label ────────────────────────────────────── */
 .eyebrow {
   font-family: 'Geist Mono', monospace;
   font-size: 11px;
@@ -118,7 +109,6 @@ body {
   color: var(--accent-text);
 }
 
-/* ─── Cards ──────────────────────────────────────────────────── */
 .card {
   background: var(--surface);
   border: 1px solid var(--border);
@@ -131,7 +121,6 @@ body {
   border-color: var(--border-strong);
 }
 
-/* ─── Buttons ────────────────────────────────────────────────── */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -151,18 +140,25 @@ body {
 }
 
 .btn-primary {
-  background: var(--accent);
+  background: var(--accent-gradient);
   color: #ffffff;
-  border-color: var(--accent);
+  border: none;
 }
 .btn-primary:hover {
-  background: var(--accent-hover);
-  border-color: var(--accent-hover);
+  filter: brightness(1.1);
   transform: translateY(-1px);
-  box-shadow: 0 4px 14px rgba(79,70,229,0.35);
+  box-shadow: 0 4px 14px rgba(249, 115, 22, 0.35);
+}
+
+:root.dark .btn-primary {
+  background: var(--accent);
+  border: 1px solid var(--accent);
 }
 :root.dark .btn-primary:hover {
+  background: var(--accent-hover);
+  border-color: var(--accent-hover);
   box-shadow: 0 4px 14px rgba(129,140,248,0.35);
+  filter: none;
 }
 
 .btn-secondary {
@@ -190,7 +186,6 @@ body {
 .btn-lg { padding: 14px 28px; font-size: 15px; border-radius: var(--radius-lg); }
 .btn-sm { padding: 7px 14px; font-size: 13px; border-radius: var(--radius-sm); }
 
-/* ─── Inputs ─────────────────────────────────────────────────── */
 .input {
   width: 100%;
   background: var(--bg);
@@ -209,13 +204,10 @@ body {
   box-shadow: 0 0 0 3px var(--accent-soft);
 }
 
-/* ─── Divider ────────────────────────────────────────────────── */
 .divider { height: 1px; background: var(--border); }
 
-/* ─── Transitions ────────────────────────────────────────────── */
 a, button { transition: all 0.2s ease; text-decoration: none; }
 
-/* ─── Custom cursor ──────────────────────────────────────────── */
 #cursor-dot, #cursor-ring {
   position: fixed;
   pointer-events: none;
@@ -236,7 +228,6 @@ a, button { transition: all 0.2s ease; text-decoration: none; }
   opacity: 0.4;
 }
 
-/* ─── Animations ─────────────────────────────────────────────── */
 @keyframes fade-up {
   from { opacity: 0; transform: translateY(20px); }
   to   { opacity: 1; transform: translateY(0); }
@@ -247,7 +238,7 @@ a, button { transition: all 0.2s ease; text-decoration: none; }
 }
 @keyframes float {
   0%, 100% { transform: translateY(0); }
-  50%       { transform: translateY(-8px); }
+  50%        { transform: translateY(-8px); }
 }
 @keyframes marquee {
   to { transform: translateX(-50%); }
@@ -257,27 +248,27 @@ a, button { transition: all 0.2s ease; text-decoration: none; }
 }
 @keyframes blink {
   0%, 100% { opacity: 1; }
-  50%       { opacity: 0; }
+  50%        { opacity: 0; }
 }
 
 .animate-float   { animation: float 5s ease-in-out infinite; }
 .animate-marquee { animation: marquee 30s linear infinite; }
 .cursor-blink    { animation: blink 1s step-end infinite; }
 
-/* ─── Scrollbar hiding ───────────────────────────────────────── */
 .hide-scrollbar::-webkit-scrollbar { display: none; }
 .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
-/* ─── Skill bar ──────────────────────────────────────────────── */
 .skill-bar-fill {
   height: 100%;
-  background: var(--accent);
+  background: var(--accent-gradient);
   border-radius: 2px;
   width: 0;
   transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
+:root.dark .skill-bar-fill {
+  background: var(--accent);
+}
 
-/* ─── Nav link ───────────────────────────────────────────────── */
 .nav-link {
   font-size: 14px;
   font-weight: 500;
@@ -289,7 +280,6 @@ a, button { transition: all 0.2s ease; text-decoration: none; }
 .nav-link:hover { color: var(--text); background: var(--surface); }
 .nav-link.active { color: var(--text); }
 
-/* ─── Section heading default ────────────────────────────────── */
 .section-heading {
   font-size: clamp(2.25rem, 5vw, 3.75rem);
   font-weight: 800;
@@ -298,7 +288,6 @@ a, button { transition: all 0.2s ease; text-decoration: none; }
   color: var(--text);
 }
 
-/* Utilities */
 .hidden { display: none !important; }
 @media (min-width: 768px) {
   .md\:block { display: block !important; }

@@ -13,7 +13,6 @@ function MorphingBlob({ dark }: { dark: boolean }) {
       meshRef.current.rotation.x = state.clock.elapsedTime * 0.2
       meshRef.current.rotation.y = state.clock.elapsedTime * 0.3
 
-      // Follow mouse slightly
       const targetX = (mouse.x * viewport.width) / 2
       const targetY = (mouse.y * viewport.height) / 2
       meshRef.current.position.x += (targetX - meshRef.current.position.x) * 0.05
@@ -21,8 +20,8 @@ function MorphingBlob({ dark }: { dark: boolean }) {
     }
   })
 
-  const color = dark ? '#1e1b4b' : '#e0e7ff'
-  const wireColor = dark ? '#818cf8' : '#6366f1'
+  const color = dark ? '#1e1b4b' : '#fff7ed'
+  const wireColor = dark ? '#818cf8' : '#ea580c'
 
   return (
     <Float speed={2} rotationIntensity={0.5} floatIntensity={1}>
@@ -42,7 +41,6 @@ function MorphingBlob({ dark }: { dark: boolean }) {
           opacity={0.8}
         />
       </mesh>
-      {/* Outer wireframe */}
       <mesh scale={1.05}>
         <sphereGeometry args={[2, 32, 32]} />
         <MeshDistortMaterial
@@ -69,9 +67,9 @@ export default function InteractiveWebGL() {
       dpr={[1, 2]}
     >
       <ambientLight intensity={dark ? 0.5 : 1} />
-      <directionalLight position={[10, 10, 5]} intensity={1.5} color={dark ? '#818cf8' : '#ffffff'} />
+      <directionalLight position={[10, 10, 5]} intensity={1.5} color={dark ? '#818cf8' : '#f97316'} />
       <MorphingBlob dark={dark} />
-      <Environment preset={dark ? "night" : "city"} />
+      <Environment preset={dark ? "night" : "sunset"} />
     </Canvas>
   )
 }
