@@ -121,3 +121,9 @@
   filter: drop-shadow(0 0 20px rgba(255, 0, 76, 0.6));
   will-change: transform;
 }
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .step-wrapper {
+    padding: 0.5rem !important;
+  }
+}
