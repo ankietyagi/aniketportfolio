@@ -445,7 +445,7 @@ const closeModal = () => {
 
             {/* Premium Resume Card */}
             <a
-              href="/src/imports/AniketTyagi-Resume.pdf"
+              href="/AniketTyagi-Resume.pdf"
               download
               className="magnetic-card anim-card"
               onMouseMove={handleMagneticMove}

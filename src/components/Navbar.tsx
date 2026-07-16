@@ -88,7 +88,7 @@ export default function Navbar() {
             {theme === 'dark' ? <SunIcon /> : <MoonIcon />}
           </button>
           <a
-            href="/src/imports/AniketTyagi-Resume.pdf"
+            href="/AniketTyagi-Resume.pdf"
             download
             className="btn btn-primary btn-sm"
             style={{ cursor: 'none' }}

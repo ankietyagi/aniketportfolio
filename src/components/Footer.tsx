@@ -53,7 +53,7 @@ export default function Footer() {
 
           {/* CTA */}
           <a
-            href="/src/imports/AniketTyagi-Resume.pdf"
+            href="/AniketTyagi-Resume.pdf"
             download
             className="btn btn-primary btn-sm"
             style={{ cursor: 'none', flexShrink: 0 }}
